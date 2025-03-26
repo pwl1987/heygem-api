@@ -1,0 +1,26 @@
+version: '3.8'
+networks:
+  ai_network:
+    driver: bridge
+
+services:
+  heygem-f2f:
+    image: registry.cn-hangzhou.aliyuncs.com/it00021hot/guiji2025_heygem.ai
+    container_name: heygem-f2f
+    restart: always
+    privileged: true
+    volumes:
+      - D:/heygem_data/face2face:/code/data
+    environment:
+      - PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:512
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: ["gpu"]
+              driver: "nvidia"
+    ports:
+      - '8383:8383'
+    command: python /code/app_local.py
+    networks:
+      - ai_network
