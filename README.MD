@@ -66,3 +66,25 @@ docker-compose logs -f
 4. 数据目录权限是否正确
 
 如需技术支持，请提交Issue到项目仓库。
+
+## 项目结构
+
+本项目包含以下三个主要部分：
+
+1. `go-heygem-api/`: 原始的 Go 语言版本项目
+   - 包含完整的 Go 语言实现
+   - 原始的项目结构和功能
+
+2. `py-heygem-api/`: Python 重构版本
+   - 使用 FastAPI 框架重构
+   - 保持原有功能的同时优化了架构
+
+3. `analysis/`: 项目分析文档
+   - 包含项目重构过程中的分析文档
+   - 功能对比和评估报告
+
+## 开发说明
+
+- Go 版本开发请进入 `go-heygem-api` 目录
+- Python 版本开发请进入 `py-heygem-api` 目录
+- 项目分析和文档请查看 `analysis` 目录
