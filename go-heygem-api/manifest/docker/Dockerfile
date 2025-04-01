@@ -21,10 +21,10 @@ WORKDIR                       $WORKDIR
 RUN apk update \
     && apk add git \
     && npm install -g pnpm \
-    && git clone https://github.com/it00021hot/HeyGem.ai.git -b web
+    && git clone https://github.com/pwl1987/web-api
 
 
-RUN  cd HeyGem.ai \
+RUN  cd web-api \
          && pnpm install \
          && pnpm run build
 
@@ -46,7 +46,7 @@ ADD resource                  $WORKDIR/resource
 ADD manifest/docker/start.sh  $WORKDIR
 ADD manifest/config/config.docker.yaml $WORKDIR/config.yaml
 COPY --from=builder /app/linux_amd64/$APP_NAME $WORKDIR/$APP_NAME
-COPY --from=web     /app/HeyGem.ai/dist/       $WORKDIR/resource
+COPY --from=web     /app/web-api/dist/       $WORKDIR/resource
 RUN chmod +xr $WORKDIR/$APP_NAME
 RUN chmod +xr $WORKDIR/start.sh
 
